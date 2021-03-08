@@ -56,7 +56,7 @@ const Layout = ({name, children}) => {
                             />
                         <Spacer width={".5rem"} />
                         <Paragraph color={theme.colors.white} fontSize={".875"}>
-                            {`${name}` || "Hassan"}
+                            {`${name ? name : "" }`}
                         </Paragraph>
                     </Cell>
                 </Cell>
