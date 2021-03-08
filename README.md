@@ -1,11 +1,15 @@
 ## Ulesson
 
+![Demo](./src/assets/demo.gif)
+
 ## Requirement and Installation
 This project requires you to have **Node** and  **Git** installed in your system.
+
+
 ## To run this project clone the repo.
 * open your command line
 * run `git clone https://github.com/chekwas88/ulesson.git`
-* cd into draw-basic-shapes
+* cd into ulesson
 
 * Run `npm install or yarn install` on the command line to install all packages.
 
@@ -16,6 +20,6 @@ This project requires you to have **Node** and  **Git** installed in your system
 - React
 - Styled Component
 - React Player
-* You can view the live app at https://chekwas88-draw-shapes.netlify.app/
+* You can view the live app at https://ulesson-assesment.netlify.app/
 
 
