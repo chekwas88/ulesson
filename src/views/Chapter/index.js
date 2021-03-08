@@ -96,10 +96,10 @@ const Page = () => {
     }
 
     const toVideo  = (data) => {
-        const {currentLesson, lessons, lessonTitle, id} = data
+        const {currentLesson, chapter, lessons, lessonTitle, id} = data
         history.push({
             pathname: `/video/${lessonTitle}/${id}`,
-            state: {currentLesson, lessons}
+            state: {currentLesson, chapter, lessons}
         })
     }
     
@@ -166,6 +166,7 @@ const Page = () => {
                                                 id,
                                                 lessonTitle:name,
                                                 lessons,
+                                                chapter: chapterName,
                                                 currentLesson: {
                                                     ...lesson,
                                                     chapter: chapterName,
@@ -178,10 +179,11 @@ const Page = () => {
                                                     <Cell 
                                                         onClick={() => toVideo(routeParam)}
                                                         flex={"0 1 15rem"} 
-                                                        mobileFlex={"0 1 100%"}
-                                                        tabletFlex={"0 1 18rem"}
+                                                        mobileFlex={"1"}
+                                                        tabletFlex={"1 1 18rem"}
                                                         padding={"0rem"} 
                                                         marginBottom={"1rem"}
+                                                        cursor={"pointer"}
                                                     >
                                                         <Card 
                                                             lessonTitle={formateTitle(name)}

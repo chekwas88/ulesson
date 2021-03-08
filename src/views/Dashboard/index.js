@@ -165,12 +165,12 @@ const Page = () => {
                         flexDirection={"row"}
                         justifyContent={"space-between"}
                         mobileFlexDirection={"column"}
-                        // screenLargeFlexWrap={"wrap"}
+                        screenLargeFlexWrap={"wrap"}
                         tabletFlexWrap={"wrap"}
                     >
                         <Cell 
                             flex={"1 1 15rem"} 
-                            mobileFlex={" 1 100%"}
+                            mobileFlex={"1"}
                             padding={"0rem"} 
                             marginBottom={"1rem"}
                         >
@@ -184,7 +184,7 @@ const Page = () => {
                         <Spacer width={"1rem"} height={"1rem"} />
                         <Cell 
                             flex={"1 1 15rem"} 
-                            mobileFlex={"0 1 100%"}
+                            mobileFlex={"1"}
                             padding={"0rem"} 
                             marginBottom={"1rem"}
                         >
@@ -198,7 +198,7 @@ const Page = () => {
                         <Spacer width={"1rem"} height={"1rem"} />
                         <Cell 
                             flex={"1 1 15rem"} 
-                            mobileFlex={"0 1 100%"}
+                            mobileFlex={"1"}
                             padding={"0rem"} 
                             marginBottom={"1rem"}
                         >
@@ -212,7 +212,7 @@ const Page = () => {
                         <Spacer width={"1rem"} height={"1rem"}/>
                         <Cell
                             flex={"1 1 15rem"} 
-                            mobileFlex={"0 1 100%"}
+                            mobileFlex={"1"}
                             padding={"0rem"} 
                             marginBottom={"1rem"}
                         >
@@ -241,12 +241,12 @@ const Page = () => {
                         flexDirection={"row"}
                         justifyContent={"space-between"}
                         mobileFlexDirection={"column"}
-                        screenLargeFlexWrap={"nowrap"}
+                        screenLargeFlexWrap={"wrap"}
                         tabletFlexWrap={"wrap"}
                     > 
                         <Cell 
                             flex={"1 1 15rem"} 
-                            mobileFlex={"0 1 100%"}
+                            mobileFlex={"1"}
                             padding={"0rem"} 
                             marginBottom={"1rem"}
                         >
@@ -260,7 +260,7 @@ const Page = () => {
                         <Spacer width={"1rem"} height={"1rem"} />
                         <Cell 
                             flex={"1 1 15rem"} 
-                            mobileFlex={"0 1 100%"}
+                            mobileFlex={"1"}
                             padding={"0rem"} 
                             marginBottom={"1rem"}
                         >
@@ -274,7 +274,7 @@ const Page = () => {
                         <Spacer width={"1rem"} height={"1rem"}/>
                         <Cell 
                             flex={"1 1 15rem"} 
-                            mobileFlex={"0 1 100%"}
+                            mobileFlex={"1"}
                             padding={"0rem"} 
                             marginBottom={"1rem"}
                         >
@@ -288,7 +288,7 @@ const Page = () => {
                         <Spacer width={"1rem"} height={"1rem"} />
                         <Cell 
                             flex={"1 1 15rem"} 
-                            mobileFlex={"0 1 100%"}
+                            mobileFlex={"1"}
                             padding={"0rem"} 
                             marginBottom={"1rem"}
                         >

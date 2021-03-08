@@ -3,8 +3,13 @@ import {Cell, Main, Header, Spacer, Image, Paragraph} from '../../elements';
 import headerIcon from "assets/headerIcon.svg"
 import personIcon from "assets/personIcon.svg"
 import theme from "../../theme";
+import {
+   useHistory
+  } from "react-router-dom";
+
 
 const Layout = ({children}) => {
+    const history = useHistory();
     return(
         <Cell>
             <Header
@@ -18,22 +23,24 @@ const Layout = ({children}) => {
                     
                     height={"100%"}
                 >
-                    <Cell 
+                   <Cell
+                        cursor={"pointer"}
+                        onClick={() => history.push('/')}
                         flexDirection={"row"}
                         alignItems={"center"}
                         justifyContent={"center"}
                         paddingLeft={"2rem"}
                     >
-                        
-                            <Image 
-                                src={headerIcon} 
-                                width={"2rem"}
-                                height={"2rem"}
-                            />
-                            <Spacer width={".5rem"} />
-                            <Paragraph color={theme.colors.white} fontSize={".875"}>
-                                {"ULesson"}
-                            </Paragraph>
+        
+                        <Image 
+                            src={headerIcon} 
+                            width={"2rem"}
+                            height={"2rem"}
+                        />
+                        <Spacer width={".5rem"} />
+                        <Paragraph color={theme.colors.white} fontSize={".875"}>
+                            {"ULesson"}
+                        </Paragraph>
                     </Cell>
                     <Cell
                         flexDirection={"row"}

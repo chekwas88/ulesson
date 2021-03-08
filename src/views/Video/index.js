@@ -9,13 +9,33 @@ import { useLocation, useHistory } from "react-router-dom";
 import "./index.css";
 import Controls from "./controls";
 
-const Page = () => {
+const Page = ({loc}) => {
     const location = useLocation();
+
+    console.log("loc", loc)
     console.log("llll", location.state);
-    const {currentLesson, lessons} = location.state;
-    const {name, media_url, chapter } = currentLesson;
+    const {currentLesson={}, chapter, lessons=[]} = location.state;
+    const {name, media_url,  id:currentLessonId } = currentLesson;
     const playerRef = React.useRef();
     const [visible, setVisible] = React.useState(true);
+    const [nextVidVisible, setnextVidVisible] = React.useState();
+
+
+    const getCurrentVidIndex = React.useCallback(() => {
+       return lessons.findIndex((item) => item.id === currentLessonId);
+
+    }, [lessons, currentLessonId])
+
+    
+
+    React.useState(() => {
+        
+        if(getCurrentVidIndex() === lessons.length -1){
+            setnextVidVisible(false)
+        }else{
+            setnextVidVisible(true)
+        }
+    },[getCurrentVidIndex, setnextVidVisible, nextVidVisible, lessons]);
 
     const [playing, setPlayState] = React.useState();
 
@@ -28,6 +48,20 @@ const Page = () => {
     const handleForward10 = () => {
         playerRef.current.seekTo(playerRef.current.getCurrentTime() + 10)
     }
+
+    const toNextVideo = () => {
+        
+        if(getCurrentVidIndex() !== lessons.length -1){
+            const nextVidId = getCurrentVidIndex() + 1;
+            const nextLesson = lessons[nextVidId];
+            const {name:lessonTitle, id} = nextLesson
+            history.replace({
+                pathname: `/video/${lessonTitle}/${id}`,
+                state: {currentLesson: nextLesson, chapter, lessons}
+            })
+        }
+    }
+
 
     return(
         <Cell                     
@@ -112,6 +146,8 @@ const Page = () => {
                         </Cell>
                         <Cell alignItems={"center"} marginTop={"1rem"}>
                             <Button
+                                disabled={getCurrentVidIndex()=== lessons.length - 1}
+                                onClick={toNextVideo}
                                 maxWidth={"8rem"}
                                 borderRadius={".5rem"}
                             >
