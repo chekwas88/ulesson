@@ -15,6 +15,9 @@ This project requires you to have **Node** and  **Git** installed in your system
 
 * Run `npm start or yarn start` to start up the project locally.
 
+
+## NOTE
+For the chapter page, the API provided was used to get the page data
 ## Built With
 
 - React

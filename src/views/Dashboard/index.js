@@ -29,7 +29,7 @@ const Page = () => {
     }
 
     return(
-        <Layout>
+        <Layout name={"Hassan"}>
             <Cell flexDirection={"row"}>
                 <Cell
                     flex={"10%"}
@@ -150,7 +150,10 @@ const Page = () => {
                         </Cell>
 
                     </Cell>
-                    <Cell marginTop={"3rem"} >
+                    
+                    <Cell marginTop={"5rem"} 
+                        flexDirection={"row"}
+                        justifyContent={"space-between"} >
                         <Paragraph 
                             tabletFont={"1rem"} 
                             fontSize={"1.75rem"}
@@ -159,6 +162,21 @@ const Page = () => {
                         >
                             {"Recently watched topics"}
                         </Paragraph>
+                        <Cell padding={"1rem"} alignItems={"flex-end"} >
+                            <Button
+                                width={"6rem"}
+                                fontSize={".875"}
+                                borderRadius={".5rem"}
+                                paddingLeft={"1rem"}
+                                paddingRight={"1rem"}
+                                paddingTop={".5rem"}
+                                paddingBottom={".5rem"}
+                                fontWeight={"600"}
+                                backgroundColor={theme.colors.transluscentRed}
+                            >
+                                {"SEE ALL"}
+                            </Button>
+                    </Cell>
                     </Cell>
                     <Cell
                         marginTop={"1rem"}
@@ -226,7 +244,11 @@ const Page = () => {
                         </Cell>
                         <Spacer width={"1rem"} height={"1rem"} />
                     </Cell>
-                    <Cell marginTop={"3rem"}>
+                   
+                    <Cell marginTop={"5rem"} 
+                        flexDirection={"row"}
+                        justifyContent={"space-between"}
+                    >
                         <Paragraph 
                             tabletFont={"1rem"} 
                             fontSize={"1.75rem"}
@@ -235,6 +257,21 @@ const Page = () => {
                         >
                             {"Recommended videos"}
                         </Paragraph>
+                        <Cell padding={"1rem"} alignItems={"flex-end"} >
+                            <Button
+                                width={"6rem"}
+                                fontSize={".875"}
+                                borderRadius={".5rem"}
+                                paddingLeft={"1rem"}
+                                paddingRight={"1rem"}
+                                paddingTop={".5rem"}
+                                paddingBottom={".5rem"}
+                                fontWeight={"600"}
+                                backgroundColor={theme.colors.transluscentRed}
+                            >
+                                {"SEE ALL"}
+                            </Button>
+                        </Cell>
                     </Cell>
                     <Cell 
                         marginTop={"1rem"}

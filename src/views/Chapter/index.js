@@ -104,7 +104,7 @@ const Page = () => {
     }
     
     return(
-        <Layout>
+        <Layout name={"Hassan"}>
             <Cell
                 flexDirection={"row"}
             >

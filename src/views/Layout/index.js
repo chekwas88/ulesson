@@ -8,7 +8,7 @@ import {
   } from "react-router-dom";
 
 
-const Layout = ({children}) => {
+const Layout = ({name, children}) => {
     const history = useHistory();
     return(
         <Cell>
@@ -56,7 +56,7 @@ const Layout = ({children}) => {
                             />
                         <Spacer width={".5rem"} />
                         <Paragraph color={theme.colors.white} fontSize={".875"}>
-                            {"Hassan"}
+                            {`${name}` || "Hassan"}
                         </Paragraph>
                     </Cell>
                 </Cell>
