@@ -13,10 +13,9 @@ function App() {
       <Switch>
           <Route exact path="/" component={DashBoard}/>
           <Route path="/:subject/chapters" component={Chapter}/>
+          <Route path="/video/:lesson/:id" component={Video}/>
         </Switch>
-      
     </Router>
-      // <Video />
     
   );
 }

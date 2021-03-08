@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Cell, Paragraph, ImageCell, Span} from "../../elements";
+import {Cell, Paragraph, ImageCell} from "../../elements";
 import theme from "../../theme";
 
 

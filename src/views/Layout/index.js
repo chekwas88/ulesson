@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Cell, Main, Header, Spacer, Headline, Image, Paragraph} from '../../elements';
+import {Cell, Main, Header, Spacer, Image, Paragraph} from '../../elements';
 import headerIcon from "assets/headerIcon.svg"
 import personIcon from "assets/personIcon.svg"
 import theme from "../../theme";

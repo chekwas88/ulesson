@@ -1,17 +1,33 @@
 import * as React from "react";
-import {Cell, Header, Headline, Spacer, Span, Image, Paragraph} from "elements";
+import ReactPlayer from 'react-player'
+import {Cell, Image, Paragraph} from "../../elements";
 import theme from "../../theme";
-import playButtonImage from "assets/buttonPlayer1.svg";
-import loopback from "assets/loop1.svg";
-import loopfront from "assets/loop2.svg";
 import nextButtonImage from "assets/next.svg";
 import arrowBack from "assets/arrorback.svg"
 import Button from "components/Button";
 import { useLocation, useHistory } from "react-router-dom";
+import "./index.css";
+import Controls from "./controls";
 
 const Page = () => {
+    const location = useLocation();
+    console.log("llll", location.state);
+    const {currentLesson, lessons} = location.state;
+    const {name, media_url, chapter } = currentLesson;
+    const playerRef = React.useRef();
+    const [visible, setVisible] = React.useState(true);
+
+    const [playing, setPlayState] = React.useState();
 
     const history = useHistory();
+    
+    const handleRewind10 = () => {
+        playerRef.current.seekTo(playerRef.current.getCurrentTime() - 10)
+    }
+
+    const handleForward10 = () => {
+        playerRef.current.seekTo(playerRef.current.getCurrentTime() + 10)
+    }
 
     return(
         <Cell                     
@@ -37,72 +53,61 @@ const Page = () => {
                     />
                 </Button>
             </Cell>
+            
             <Cell flex={"80%"}>
                 <Cell
+                    
                     width={"80%"}
                     tabletWidth={"90%"}
-                    margin={"2rem auto"}
-                    // padding={"1rem"} 
-                    
-                >
-                    <Cell 
-                        position={"relative"}
-                        backgroundColor={theme.colors.dark}
-                        width={"100%"}
-                        // height={"100%"}
-                        borderRadius={"1rem"}
-                        alignItems={"center"}
-                        height={"25rem"}
-                        tabletHeight={"15rem"}
-                        justifyContent={"center"}
-                        
-                        
-                    >
-                        <Cell 
-                            position={"absolute"}
-                            margin={"auto"}
-                            backgroundColor={theme.colors.dark}
-                            width={"auto"}
-                            left={"0"}
-                            right={"0"}
-                            justifyContent={"center"}
-                            flexDirection={"row"}
-                        >
-                            
-                            <Button
-                                backgroundColor={theme.colors.transparent}
-                                width={"5rem"}
-                            >
-                                <Image 
-                                    src={loopback}
-                                />
-                            </Button>
-                            <Button
-                                backgroundColor={theme.colors.transparent}
-                                width={"5rem"}
-                            >
-                                <Image 
-                                    src={playButtonImage}
-                                />
-                            </Button>
-                            <Button
-                                backgroundColor={theme.colors.transparent}
-                                width={"5rem"}
-                            >
-                                <Image 
-                                    src={loopfront}
-                                />
-                            </Button>
-                        </Cell>
-                    </Cell>
+                    margin={"1rem auto"}
+                    padding={"1rem"} 
+                    borderRadius={"1rem"}
 
+                >
+                    
+                            
+                            <Cell
+                                maxWidth={"100%"}
+                                position={"relative"}
+                                backgroundColor={"black"}
+                                id={"player"}
+                                borderRadius={"1rem"}
+                                height={"24rem"}
+                                onMouseOver={() => setVisible(true)}
+                                onMouseEnter={() => setVisible(true)}
+                                onMouseLeave={() => setVisible(false)}
+                                justifyContent={"center"}
+                                alignItems={"center"}
+                                tabletHeight={"15rem"}
+                            >
+                               
+                                <ReactPlayer
+                                    
+                                    ref={playerRef}
+                                    url={media_url}
+                                    controls={true}
+                                    width={"100%"}
+                                    className={"react-player"}
+                                    playing={playing}
+                                />
+                               
+                                    <Controls
+                                         playing={playing} 
+                                         handlePlay={setPlayState}
+                                         forward10={handleForward10}
+                                         rewind10={handleRewind10}
+                                         setVisible={setVisible}
+                                         visible={visible}
+                                    />
+                            </Cell>
+                  
                     <Cell alignItems={"center"} justifyContent={"center"} marginTop={"2rem"}>
                         <Paragraph fontWeight={"600"} fontSize={"1rem"}>
-                            {"Number line representation"}
+                            {chapter}
                         </Paragraph>
                         <Cell alignItems={"center"} marginTop={"1rem"}>
                             <Paragraph opacity={".5"} fontSize={"1rem"}>
-                                {"Rational Numbers"}
+                                {name}
                             </Paragraph>
                         </Cell>
                         <Cell alignItems={"center"} marginTop={"1rem"}>

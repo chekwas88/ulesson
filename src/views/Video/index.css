@@ -1,0 +1,14 @@
+.react-player {
+    height: 22rem;
+    
+}
+@media only screen and (max-width: 1024px) {
+    .react-player {
+        height: 12rem !important;
+        
+    }
+}
+
+
+
+  /* react-player__shadow and react-player__play-icon */

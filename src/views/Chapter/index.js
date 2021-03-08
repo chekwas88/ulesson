@@ -96,10 +96,9 @@ const Page = () => {
     }
 
     const toVideo  = (data) => {
-        const [currentLesson, lessons, lessonTitle, id] = data
-        history.push()
+        const {currentLesson, lessons, lessonTitle, id} = data
         history.push({
-            pathname: `/${lessonTitle}/${id}`,
+            pathname: `/video/${lessonTitle}/${id}`,
             state: {currentLesson, lessons}
         })
     }
@@ -141,7 +140,7 @@ const Page = () => {
                     {pageData && (
                         <Cell>
                             {chapters ? chapters.map((chap) => {
-                                const {lessons, name, id} = chap;
+                                const {lessons, name: chapterName, id} = chap;
                                 return(<React.Fragment key={id}>
                                     <Cell marginTop={"1rem"} >
                                         <Paragraph 
@@ -150,7 +149,7 @@ const Page = () => {
                                             fontWeight={"500"}
                                             fontFamily={"itim"}
                                         >
-                                            {`${id}. ${name}`}
+                                            {`${id}. ${chapterName}`}
                                         </Paragraph>
                                     </Cell>
                                     <Cell
@@ -162,12 +161,22 @@ const Page = () => {
                                         tabletFlexWrap={"wrap"}
                                     >
                                         {lessons.map((lesson) => {
-                                            const {icon, media_url, name, id} = lesson
+                                            const {icon, name, id} = lesson
+                                            const routeParam = {
+                                                id,
+                                                lessonTitle:name,
+                                                lessons,
+                                                currentLesson: {
+                                                    ...lesson,
+                                                    chapter: chapterName,
+                                                    }
+                                            }
                                             return(
                                                 <React.Fragment key={id}>
                                                     
                                                 
                                                     <Cell 
+                                                        onClick={() => toVideo(routeParam)}
                                                         flex={"0 1 15rem"} 
                                                         mobileFlex={"0 1 100%"}
                                                         tabletFlex={"0 1 18rem"}

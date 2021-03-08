@@ -7,7 +7,7 @@ const StyledButton = styled.button`
     appearance: appearance-none;
     justify-content: center;
     align-items: center;
-    border-style: solid;
+    /* border-style: solid; */
     padding-left: ${(props) => props.paddingLeft || ".5rem" };
     padding-right: ${(props) => props.paddingRight || ".5rem" };
     padding-top: ${(props) => props.paddingTop || ".5rem" };
@@ -27,6 +27,10 @@ const StyledButton = styled.button`
         cursor: pointer;
         background-color: ${(props) => props.hoverBackground || props.backgroundColor}
        
+    }
+    &:focus {
+        outline: none;
+        border: none;
     }
 
     ${(props) =>
