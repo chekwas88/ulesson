@@ -11,7 +11,7 @@ const Card = ({lessonTitle, src, ...props}) => {
             backgroundColor={theme.colors.white}
             borderRadius={"1rem"}
             paddingBottom={"2rem"}
-            height={"100%"}
+            // height={"100%"}
             
         >   <Cell
                 flexDirection={"row"}

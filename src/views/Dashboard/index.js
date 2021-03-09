@@ -34,6 +34,7 @@ const Page = () => {
                 <Cell
                     flex={"10%"}
                     alignItems={"flex-end"}
+                   
                 >
                     <Button                        
                         backgroundColor={theme.colors.transparent}
@@ -49,15 +50,18 @@ const Page = () => {
                     </Cell>
                     <Cell
                         flexDirection={"row"}
-                        justifyContent={"space-between"}
-                        // flexWrap={"wrap"}
+                        // justifyContent={"space-between"}
+                        flexWrap={"wrap"}
+                        screenLargeFlexWrap={"wrap"}
                     >
 
                         <Cell
                             cursor={"pointer"}
-                            height={"10rem"}
+                            height={"8rem"}
+                            tabletHeight={"5rem"}
                             position={"relative"}
                             flex={"1"}
+                            mobileFlex={"0 1 5rem"}                            
                             onClick={() => toChapter("mathematics")}
                         >
                             <ImageCell
@@ -66,17 +70,18 @@ const Page = () => {
                                 width={"100%"}
                                 height={"100%"}
                                 borderRadius={".5rem"}
-                                alignItems={"center"}
-                                justifyContent={"center"}
+                                
                             />
                             
                         </Cell>
                         <Spacer width={"1rem"} />
                         <Cell
                             cursor={"pointer"}
-                            height={"10rem"}
+                            height={"8rem"}
                             position={"relative"}
+                            tabletHeight={"5rem"}
                             flex={"1"}
+                            mobileFlex={"0 1 5rem"}
                             onClick={() => toChapter("physics")}
                         >
                             <ImageCell
@@ -84,7 +89,6 @@ const Page = () => {
                                 backgroundImage={physicsImageCard} 
                                 height={"100%"}
                                 borderRadius={".5rem"}
-                                alignItems={"center"}
                                 justifyContent={"center"}
                             />
                             
@@ -93,9 +97,11 @@ const Page = () => {
 
                         <Cell
                             cursor={"pointer"}
-                            height={"10rem"}
+                            height={"8rem"}
                             position={"relative"}
+                            tabletHeight={"5rem"}
                             flex={"1"}
+                            mobileFlex={"0 1 5rem"}
                             onClick={() => toChapter("chemistry")}
                         >
                             <ImageCell
@@ -112,9 +118,11 @@ const Page = () => {
                         <Spacer width={"1rem"} />
 
                         <Cell
-                            flex={"1"}
-                            height={"10rem"}
+                             flex={"1"}
+                            height={"8rem"}
+                            mobileFlex={"0 1 5rem"}
                             position={"relative"}
+                            tabletHeight={"5rem"}
                             cursor={"pointer"}
                             onClick={() => toChapter("biology")}
                         >
@@ -131,10 +139,12 @@ const Page = () => {
                         <Spacer width={"1rem"} />
 
                         <Cell
-                            height={"10rem"}
+                            height={"8rem"}
                             position={"relative"}
                             flex={"1"}
+                            tabletHeight={"5rem"}
                             cursor={"pointer"}
+                            mobileFlex={"0 1 5rem"}
                             onClick={() => toChapter("english")}
                         >
                             <ImageCell
@@ -143,8 +153,7 @@ const Page = () => {
                                 width={"100%"}
                                 height={"100%"}
                                 borderRadius={".5rem"}
-                                alignItems={"center"}
-                                justifyContent={"center"}
+                                
                             />
                             
                         </Cell>
@@ -153,6 +162,7 @@ const Page = () => {
                     
                     <Cell marginTop={"5rem"} 
                         flexDirection={"row"}
+                        
                         justifyContent={"space-between"} >
                         <Paragraph 
                             tabletFont={"1rem"} 
@@ -183,7 +193,6 @@ const Page = () => {
                         flexDirection={"row"}
                         justifyContent={"space-between"}
                         mobileFlexDirection={"column"}
-                        screenLargeFlexWrap={"wrap"}
                         tabletFlexWrap={"wrap"}
                     >
                         <Cell 
@@ -278,7 +287,6 @@ const Page = () => {
                         flexDirection={"row"}
                         justifyContent={"space-between"}
                         mobileFlexDirection={"column"}
-                        screenLargeFlexWrap={"wrap"}
                         tabletFlexWrap={"wrap"}
                     > 
                         <Cell 

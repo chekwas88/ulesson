@@ -544,17 +544,12 @@ export const Cell = styled.div`
                  display: ${props.tabletDisplay};
         `};
         ${(props) =>
-        props.tabletGridTemplate &&
+        props.tabletFlex &&
              css`
-                grid-template-columns: ${props.tabletGridTemplate};
+                flex: ${props.tabletFlex};
         `};
         ${(props) =>
-        props.tabletPadding &&
-            css`
-                padding: ${props.tabletPadding};
-            `};
-        ${(props) =>
-        props.tabletFlexWrap &&
+        
         css`
             flex-wrap: ${props.tabletFlexWrap};
         `};

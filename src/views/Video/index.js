@@ -9,11 +9,9 @@ import { useLocation, useHistory } from "react-router-dom";
 import "./index.css";
 import Controls from "./controls";
 
-const Page = ({loc}) => {
-    const location = useLocation();
 
-    console.log("loc", loc)
-    console.log("llll", location.state);
+const Page = () => {
+    const location = useLocation();
     const {currentLesson={}, chapter, lessons=[]} = location.state;
     const {name, media_url,  id:currentLessonId } = currentLesson;
     const playerRef = React.useRef();

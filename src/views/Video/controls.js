@@ -16,65 +16,70 @@ const Controls = ({handlePlay, visible, setVisible, rewind10, forward10, playing
     }
    
     return(
-        <Cell 
-            position={"absolute"}
-            margin={"auto"}
-            width={"auto"}
-            left={"0"}
-            right={"0"}
+        <React.Fragment>
+           
+            <Cell 
+                position={"absolute"}
+                margin={"auto"}
+                width={"auto"}
+                left={"0"}
+                right={"0"}
             
-        >
-        {visible ?
-            (<Cell 
-                justifyContent={"center"}
-                flexDirection={"row"}
             >
-                <Button
-                    onClick={rewind10}
-                    backgroundColor={theme.colors.transparent}
-                    width={"4rem"}
-                    height={"4rem"}
+            {visible ?
+                (<Cell 
+                    justifyContent={"center"}
+                    flexDirection={"row"}
                 >
-                    <Image 
-                        src={loopback}
-                    />
-                </Button>
-                <Spacer width={"1rem"} />
-                {!playing ? (
                     <Button
-                    onClick={() => _handlePlay()}
-                    backgroundColor={theme.colors.transparent}
-                    width={"4rem"}
-                    height={"4rem"}
-                    >
-                    <Image 
-                        src={playButtonImage}
-                    />
-                    </Button>): (<Button
-                        onClick={() => _handlePlay()}
-                        backgroundColor={theme.colors.white}
+                        onClick={rewind10}
+                        backgroundColor={theme.colors.transparent}
                         width={"4rem"}
                         height={"4rem"}
-                        borderRadius={"50%"}
                     >
                         <Image 
-                            src={pauseButtonImage}
+                            src={loopback}
                         />
-                    </Button>)
-                }
-                <Spacer width={"1rem"} />
-                <Button
-                    onClick={forward10}
-                    backgroundColor={theme.colors.transparent}
-                    width={"4rem"}
-                    height={"4rem"}
-                >
-                    <Image 
-                        src={loopfront}
-                    />
-                </Button>
-            </Cell>):null}
-        </Cell>
+                    </Button>
+                    <Spacer width={"1rem"} />
+                    {!playing ? (
+                        <Button
+                        onClick={() => _handlePlay()}
+                        backgroundColor={theme.colors.transparent}
+                        width={"4rem"}
+                        height={"4rem"}
+                        >
+                        <Image 
+                            src={playButtonImage}
+                        />
+                        </Button>): (<Button
+                            onClick={() => _handlePlay()}
+                            backgroundColor={theme.colors.white}
+                            width={"4rem"}
+                            height={"4rem"}
+                            borderRadius={"50%"}
+                        >
+                            <Image 
+                                src={pauseButtonImage}
+                            />
+                        </Button>)
+                    }
+                        <Spacer width={"1rem"} />
+                        <Button
+                            onClick={forward10}
+                            backgroundColor={theme.colors.transparent}
+                            width={"4rem"}
+                            height={"4rem"}
+                        >
+                            <Image 
+                                src={loopfront}
+                            />
+                        </Button>
+                    </Cell>):null}
+            </Cell>
+           
+        </React.Fragment>
+        
     )
 }
 export default Controls;
