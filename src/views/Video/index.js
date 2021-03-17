@@ -26,15 +26,7 @@ const Page = () => {
 
     
 
-    React.useState(() => {
-        
-        if(getCurrentVidIndex() === lessons.length -1){
-            setnextVidVisible(false)
-        }else{
-            setnextVidVisible(true)
-        }
-    },[getCurrentVidIndex, setnextVidVisible, nextVidVisible, lessons]);
-
+    
     const [playing, setPlayState] = React.useState();
 
     const history = useHistory();
