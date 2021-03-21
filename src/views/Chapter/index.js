@@ -6,106 +6,26 @@ import Layout from "views/Layout";
 import theme from "../../theme";
 import { useLocation, useHistory } from "react-router-dom";
 import arrowBack from "assets/arrorback.svg"
+import {useChapterContext,} from "contexts/chapterContext";
 
-const Page = () => {
-    const location = useLocation();
-    const history = useHistory();
-    const pageSubject = location.pathname.split('/')[1]
-    const [pageData, setPagedata] = React.useState();
-    const [chapters, setChapters] = React.useState();
-
-    const {data, status, error, refetch} = useData();
-    
-    React.useEffect(() => {
-        if(data){
-            const results = data.subjects.filter((sub) => sub.name.toLowerCase() === pageSubject );
-            setPagedata(results);
-            const chaps = results.map((item) => item.chapters)
-            setChapters(...chaps)
-             
-        }
-    }, [pageSubject, data]);
-
-
-
-    if(["idle","pending"].includes(status)){
-        return (
-            <Layout>
-                <Loader />
-            </Layout>
-        )
-    }
-
-    if(error){
-        return (
-            <Layout>
-                <Cell
-                    flexDirection={"row"}
-                >
-                    <Cell
-                        margin={"1.3rem auto"}
-                        flex={"10%"}
-                        alignItems={"flex-end"}
-                    >
-                        <Button
-                            onClick={() => history.goBack()}
-                            maxWidth={"5rem"}
-                            height={"2rem"}
-                            fontSize={"2rem"}
-                            backgroundColor={theme.colors.transparent}
-                        >
-                            <Image 
-                                src={arrowBack}
-                            />
-                        </Button>
-                    </Cell>
-                    <Cell
-                        height={"calc(100vh - 8rem)"}
-                        justifyContent={"center"}
-                        alignItems={"center"}
-                    >
-                        <Span textAlign={"center"} marginBottom={".5rem"} padding={"1rem"}>
-                            {"Could not complete your requset at the momment."}
-                        </Span>
-                        <Button
-                            paddingTop={"1rem"}
-                            paddingBottom={"1rem"}
-                            paddingLeft={"1rem"}
-                            paddingRight={"1rem"}
-                            width={"10rem"}
-                            backgroundColor={theme.colors.dark}
-                            onClick={refetch}
-                            fontSize={"1rem"}
-                        >
-                            {" Please Try Again"}
-                        </Button>
-                    </Cell>
-                    <Cell flex={"10%"} />
-                </Cell>
-               
-            </Layout>
-        )
-    }
-
-
+const Chapter = ({chapters, history, pageData, pageSubject}) => {
+    const {setCurrentVideo} = useChapterContext()
     const formateTitle = (title) => {
         if(title.length > 30){
             return `${title.substr(0, 30)}...`
         }
         return title;
     }
-
     const toVideo  = (data) => {
         const {currentLesson, chapter, lessons, lessonTitle, id} = data
         history.push({
             pathname: `/video/${lessonTitle}/${id}`,
-            state: {currentLesson, chapter, lessons}
         })
+        setCurrentVideo({currentLesson, chapter, lessons})
     }
-    
-    return(
-        <Layout name={"Hassan"}>
-            <Cell
+
+    return (
+        <Cell
                 flexDirection={"row"}
             >
                 <Cell
@@ -205,6 +125,99 @@ const Page = () => {
                 </Cell>
                 <Cell flex={"10%"} />
             </Cell>
+    )
+}
+
+const Page = () => {
+    const location = useLocation();
+    const history = useHistory();
+    const pageSubject = location.pathname.split('/')[1]
+    const [pageData, setPagedata] = React.useState();
+    const [chapters, setChapters] = React.useState();
+    const {data, status, error, refetch} = useData();
+    
+    React.useEffect(() => {
+        if(data){
+            const results = data.subjects.filter((sub) => sub.name.toLowerCase() === pageSubject );
+            setPagedata(results);
+            const chaps = results.map((item) => item.chapters)
+            setChapters(...chaps)
+             
+        }
+        window.sessionStorage.clear();
+    }, [pageSubject, data]);
+
+
+
+    if(["idle","pending"].includes(status)){
+        return (
+            <Layout>
+                <Loader />
+            </Layout>
+        )
+    }
+
+    if(error){
+        return (
+            <Layout>
+                <Cell
+                    flexDirection={"row"}
+                >
+                    <Cell
+                        margin={"1.3rem auto"}
+                        flex={"10%"}
+                        alignItems={"flex-end"}
+                    >
+                        <Button
+                            onClick={() => history.goBack()}
+                            maxWidth={"5rem"}
+                            height={"2rem"}
+                            fontSize={"2rem"}
+                            backgroundColor={theme.colors.transparent}
+                        >
+                            <Image 
+                                src={arrowBack}
+                            />
+                        </Button>
+                    </Cell>
+                    <Cell
+                        height={"calc(100vh - 8rem)"}
+                        justifyContent={"center"}
+                        alignItems={"center"}
+                    >
+                        <Span textAlign={"center"} marginBottom={".5rem"} padding={"1rem"}>
+                            {"Could not complete your requset at the momment."}
+                        </Span>
+                        <Button
+                            paddingTop={"1rem"}
+                            paddingBottom={"1rem"}
+                            paddingLeft={"1rem"}
+                            paddingRight={"1rem"}
+                            width={"10rem"}
+                            backgroundColor={theme.colors.dark}
+                            onClick={refetch}
+                            fontSize={"1rem"}
+                        >
+                            {" Please Try Again"}
+                        </Button>
+                    </Cell>
+                    <Cell flex={"10%"} />
+                </Cell>
+               
+            </Layout>
+        )
+    }
+
+
+   
+
+   
+    
+    
+    return(
+        <Layout name={"Hassan"}>
+            
+            <Chapter history={history} pageData={pageData} pageSubject={pageSubject} chapters={chapters} />
         </Layout>
     )
 }

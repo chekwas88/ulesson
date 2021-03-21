@@ -6,16 +6,21 @@ import {
 import DashBoard from "./views/Dashboard";
 import Chapter from "views/Chapter";
 import Video from "views/Video";
+import {ChapterProvider} from "contexts/chapterContext";
 
 function App() {
   return (
-    <Router>
-      <Switch>
-          <Route exact path="/" component={DashBoard}/>
-          <Route path="/:subject/chapters" component={Chapter}/>
-          <Route path="/video/:lesson/:id" component={Video}/>
+    <ChapterProvider>
+      <Router>
+      
+        <Switch>
+            <Route exact path="/" component={DashBoard}/>
+            <Route path="/:subject/chapters" component={Chapter}/>
+            <Route path="/video/:lesson/:id" component={Video}/>
         </Switch>
-    </Router>
+          
+      </Router>
+    </ChapterProvider>
     
   );
 }
